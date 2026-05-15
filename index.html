@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amit Kumar — Data Science & Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+  <!-- ✅ EmailJS — Replace YOUR_PUBLIC_KEY below -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // ✅ EMAILJS SETUP: Replace with your own keys from https://www.emailjs.com/
+    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Account > API Keys
+    const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Email Services tab
+    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Email Templates tab
+    (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <span class="logo-symbol">◆</span>
+      <span>Amit Kumar</span>
+    </div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home"     class="nav-link">Home</a></li>
+      <li><a href="#about"    class="nav-link">About</a></li>
+      <li><a href="#skills"   class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#resume"   class="nav-link">Resume</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
+      <li><button id="themeBtn" class="theme-btn" title="Toggle theme"><i class="fas fa-moon"></i></button></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="home">
+  <div class="home-content">
+
+    <!-- LEFT: text + profile photo -->
+    <div class="hero-left" style="animation:slideInLeft .8s ease-out">
+
+      <!-- ✅ Profile Photo -->
+      <div class="profile-photo-wrapper">
+        <div class="profile-photo-container" onclick="document.getElementById('photoInput').click()" title="Upload photo">
+          <img id="profilePhoto" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'%3E%3Crect width='110' height='110' rx='55' fill='%23eff1f8'/%3E%3Ccircle cx='55' cy='42' r='20' fill='%230066ff' opacity='.35'/%3E%3Cellipse cx='55' cy='90' rx='32' ry='22' fill='%230066ff' opacity='.2'/%3E%3C/svg%3E" alt="Profile photo" />
+          <div class="photo-upload-overlay">
+            <i class="fas fa-pencil-alt"></i>
+            <span>Change</span>
+          </div>
+        </div>
+        <input type="file" id="photoInput" accept="image/*" />
+      </div>
+
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-title">
+        <span class="typing-text">Hi, I'm Amit Kumar</span>
+      </h1>
+      <p class="hero-subtitle">MCA Student · Data Science · Web Developer</p>
+      <p class="hero-description">
+        Passionate about building meaningful projects at the intersection of data science, web development, and real-world problem solving.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact"  class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: floating cards -->
+    <div class="hero-visual">
+      <div class="floating-card card-1">
+        <div class="card-content"><i class="fas fa-code"></i><p>Web Dev</p></div>
+      </div>
+      <div class="floating-card card-2">
+        <div class="card-content"><i class="fas fa-chart-line"></i><p>Data Science</p></div>
+      </div>
+      <div class="floating-card card-3">
+        <div class="card-content"><i class="fas fa-database"></i><p>Databases</p></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll to explore</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card" data-target="5"  data-suffix="+">
+        <div class="stat-icon"><i class="fas fa-folder-open"></i></div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-card" data-target="10" data-suffix="+">
+        <div class="stat-icon"><i class="fas fa-tools"></i></div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Skills Learned</div>
+      </div>
+      <div class="stat-card" data-target="3"  data-suffix="">
+        <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-card" data-target="3"  data-suffix="+ yrs">
+        <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">Years Learning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about section-pad">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p class="about-intro">
+          I'm an aspiring technologist with a passion for solving real-world problems through code and data. Currently pursuing my Master's in Computer Applications with a specialization in Data Science at Dev Sanskriti Vishwavidyalaya.
+        </p>
+        <p class="about-description">
+          With a foundation in HTML, CSS, C++, Python, and MySQL, I'm eager to deliver robust solutions by integrating skills in web development, programming, and database management. I'm a continuous learner who thrives in collaborative environments and loves tackling challenging technical problems.
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-brain"></i>
+            <div><h4>Analytical Problem-Solving</h4><p>Breaking down complex problems into elegant solutions</p></div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-users"></i>
+            <div><h4>Collaboration & Communication</h4><p>Effective written and verbal communication skills</p></div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-graduation-cap"></i>
+            <div><h4>Continuous Learning</h4><p>Passion for exploring new technologies and frameworks</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-info">
+        <div class="info-card">
+          <h3>Education</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:var(--primary)"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">2025 — Present</span>
+                <h4>MCA (Data Science)</h4>
+                <p>Dev Sanskriti Vishwavidyalaya, Haridwar</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#1d9e75"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">2023 — 2024</span>
+                <h4>ADCA</h4>
+                <p>Advanced Diploma in Computer Application</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#6b5b95"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">2022 — 2025</span>
+                <h4>Bachelor of Science</h4>
+                <p>Dr. Ram Manohar Lohia Avadh University, Ayodhya</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills section-pad">
+  <div class="container">
+    <h2 class="section-title">Skills & Expertise</h2>
+
+    <!-- Skill Icon Grid (always visible) -->
+    <div class="skills-icon-grid" id="skillIconGrid"></div>
+
+    <!-- Toggle -->
+    <div class="skill-toggle">
+      <button class="skill-toggle-btn active" id="btnBars"  onclick="showSkillView('bars')">
+        <i class="fas fa-bars"></i> Progress Bars
+      </button>
+      <button class="skill-toggle-btn"        id="btnRadar" onclick="showSkillView('radar')">
+        <i class="fas fa-spider"></i> Radar Chart
+      </button>
+    </div>
+
+    <!-- Progress Bars -->
+    <div id="skillBarsView">
+      <div class="skills-grid">
+        <div class="skills-category">
+          <h3 class="category-title"><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+          <div class="skill-list">
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">Python</span><span class="skill-percent">85%</span></div><div class="progress-bar"><div class="progress" data-width="85"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">HTML / CSS</span><span class="skill-percent">80%</span></div><div class="progress-bar"><div class="progress" data-width="80"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-percent">75%</span></div><div class="progress-bar"><div class="progress" data-width="75"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">MySQL</span><span class="skill-percent">80%</span></div><div class="progress-bar"><div class="progress" data-width="80"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">C++</span><span class="skill-percent">70%</span></div><div class="progress-bar"><div class="progress" data-width="70"></div></div></div>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h3 class="category-title"><i class="fas fa-chart-bar"></i> Data & Tools</h3>
+          <div class="skill-list">
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">Pandas / NumPy</span><span class="skill-percent">80%</span></div><div class="progress-bar"><div class="progress" data-width="80"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">Excel / Google Sheets</span><span class="skill-percent">85%</span></div><div class="progress-bar"><div class="progress" data-width="85"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">Adobe Photoshop</span><span class="skill-percent">70%</span></div><div class="progress-bar"><div class="progress" data-width="70"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">CorelDRAW</span><span class="skill-percent">75%</span></div><div class="progress-bar"><div class="progress" data-width="75"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">MS Office</span><span class="skill-percent">90%</span></div><div class="progress-bar"><div class="progress" data-width="90"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Radar Chart -->
+    <div id="skillRadarView" style="display:none;">
+      <div class="radar-container">
+        <canvas id="radarChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="languages-section">
+      <h3 class="category-title"><i class="fas fa-globe"></i> Languages</h3>
+      <div class="languages-list">
+        <div class="language-item">
+          <span class="language-name">English</span>
+          <div class="language-stars">
+            <i class="fas fa-star filled"></i><i class="fas fa-star filled"></i>
+            <i class="fas fa-star filled"></i><i class="fas fa-star filled"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="language-item">
+          <span class="language-name">Hindi</span>
+          <div class="language-stars">
+            <i class="fas fa-star filled"></i><i class="fas fa-star filled"></i>
+            <i class="fas fa-star filled"></i><i class="fas fa-star filled"></i>
+            <i class="fas fa-star filled"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects section-pad">
+  <div class="container">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-header">
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="data">Data Science</button>
+        <button class="filter-btn" data-filter="database">Database</button>
+      </div>
+      <button class="add-project-btn" onclick="openProjectModal()">
+        <i class="fas fa-plus"></i> Add New Project
+      </button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Static seed projects -->
+      <div class="project-card" data-category="web">
+        <div class="project-image">
+          <div class="project-placeholder"><i class="fas fa-shopping-cart"></i></div>
+          <div class="project-overlay"><div class="overlay-links">
+            <a href="#" class="overlay-btn"><i class="fas fa-eye"></i></a>
+            <a href="#" class="overlay-btn"><i class="fab fa-github"></i></a>
+          </div></div>
+        </div>
+        <div class="project-content">
+          <span class="project-cat-badge">Web Dev</span>
+          <h3 class="project-title">E-Commerce Platform</h3>
+          <p class="project-description">Full-stack e-commerce solution with product catalog, user auth, and database management.</p>
+          <div class="project-tech">
+            <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span><span class="tech-tag">Python</span><span class="tech-tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card" data-category="data">
+        <div class="project-image">
+          <div class="project-placeholder"><i class="fas fa-chart-line"></i></div>
+          <div class="project-overlay"><div class="overlay-links">
+            <a href="#" class="overlay-btn"><i class="fas fa-eye"></i></a>
+            <a href="#" class="overlay-btn"><i class="fab fa-github"></i></a>
+          </div></div>
+        </div>
+        <div class="project-content">
+          <span class="project-cat-badge data">Data Science</span>
+          <h3 class="project-title">Data Analysis Dashboard</h3>
+          <p class="project-description">Interactive dashboard for analyzing and visualizing complex datasets using Pandas and NumPy.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span>
+            <span class="tech-tag">NumPy</span><span class="tech-tag">Excel</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card" data-category="database">
+        <div class="project-image">
+          <div class="project-placeholder"><i class="fas fa-database"></i></div>
+          <div class="project-overlay"><div class="overlay-links">
+            <a href="#" class="overlay-btn"><i class="fas fa-eye"></i></a>
+            <a href="#" class="overlay-btn"><i class="fab fa-github"></i></a>
+          </div></div>
+        </div>
+        <div class="project-content">
+          <span class="project-cat-badge db">Database</span>
+          <h3 class="project-title">Student Management System</h3>
+          <p class="project-description">Comprehensive database-driven app for managing student records, attendance, and performance.</p>
+          <div class="project-tech">
+            <span class="tech-tag">C++</span><span class="tech-tag">MySQL</span>
+            <span class="tech-tag">CRUD</span><span class="tech-tag">OOP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD PROJECT MODAL -->
+<div class="modal-backdrop" id="projectModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3><i class="fas fa-plus-circle"></i> Add New Project</h3>
+      <button class="modal-close" onclick="closeProjectModal()"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="form-group">
+      <label>Project Title *</label>
+      <input type="text" id="pm-title" placeholder="My Awesome Project" />
+      <span class="error-msg" id="pm-title-err">Please enter a title.</span>
+    </div>
+    <div class="form-group">
+      <label>Description *</label>
+      <textarea id="pm-desc" rows="3" placeholder="What does your project do?"></textarea>
+      <span class="error-msg" id="pm-desc-err">Please add a description.</span>
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <select id="pm-cat">
+        <option value="web">Web Dev</option>
+        <option value="data">Data Science</option>
+        <option value="database">Database</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Technologies (press Enter or comma to add)</label>
+      <input type="text" id="pm-tech-input" placeholder="e.g. Python" />
+      <div class="tech-tags-input" id="pm-tech-tags"></div>
+    </div>
+    <div class="form-group">
+      <label>Live Link <span style="color:var(--txt3)">(optional)</span></label>
+      <input type="url" id="pm-live" placeholder="https://your-demo.com" />
+    </div>
+    <div class="form-group">
+      <label>GitHub Link <span style="color:var(--txt3)">(optional)</span></label>
+      <input type="url" id="pm-github" placeholder="https://github.com/you/repo" />
+    </div>
+    <div class="form-group">
+      <label>Project Image <span style="color:var(--txt3)">(optional)</span></label>
+      <input type="file" id="pm-image" accept="image/*" />
+    </div>
+
+    <button class="btn btn-primary btn-full" style="margin-top:.5rem" onclick="saveProject()">
+      <i class="fas fa-save"></i> Save Project
+    </button>
+  </div>
+</div>
+
+<!-- RESUME -->
+<section id="resume" class="resume section-pad">
+  <div class="container">
+    <h2 class="section-title">Resume</h2>
+    <div class="resume-content">
+      <p class="resume-description">
+        Download my complete resume to learn more about my experience, education, and qualifications.
+      </p>
+      <div class="resume-buttons">
+        <!-- ✅ Replace href with the actual path to your PDF resume -->
+        <a href="Amit_Kumar_Resume.pdf" class="btn btn-primary" download="Amit_Kumar_Resume.pdf">
+          <i class="fas fa-download"></i> Download Resume (PDF)
+        </a>
+        <a href="Amit_Kumar_Resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener">
+          <i class="fas fa-eye"></i> View Online
+        </a>
+      </div>
+      <p class="resume-note">
+        <i class="fas fa-info-circle"></i>
+        Place your resume PDF named <code>Amit_Kumar_Resume.pdf</code> in the same folder as this HTML file.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact section-pad">
+  <div class="container">
+    <h2 class="section-title">Let's Work Together</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <p>Have a project in mind or want to collaborate? I'd love to hear from you!</p>
+        <div class="contact-details">
+          <div class="detail-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:amitkumar05.ak11@gmail.com">amitkumar05.ak11@gmail.com</a>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+919870835945">+91 9870835945</a>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Location</h4>
+              <p>Haridwar, Uttarakhand, India</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:amitkumar05.ak11@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <!-- ✅ EmailJS contact form -->
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="c-name">Your Name</label>
+          <input type="text"  id="c-name"    name="from_name"  placeholder="Amit Kumar"          required />
+          <span class="error-msg"></span>
+        </div>
+        <div class="form-group">
+          <label for="c-email">Your Email</label>
+          <input type="email" id="c-email"   name="reply_to"   placeholder="amit@example.com"    required />
+          <span class="error-msg"></span>
+        </div>
+        <div class="form-group">
+          <label for="c-subject">Subject</label>
+          <input type="text"  id="c-subject" name="subject"     placeholder="Project Collaboration" required />
+          <span class="error-msg"></span>
+        </div>
+        <div class="form-group">
+          <label for="c-msg">Message</label>
+          <textarea id="c-msg" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          <span class="error-msg"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Amit Kumar. All rights reserved.</p>
+    <p>Designed & Developed with <i class="fas fa-heart"></i> using HTML, CSS &amp; JavaScript</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-icon"><i class="fas fa-check-circle" id="toast-icon-el"></i></div>
+  <div class="toast-body">
+    <strong id="toast-title">Done!</strong>
+    <p id="toast-msg">Action completed.</p>
+  </div>
+  <button class="toast-close" onclick="closeToast()"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-spinner"></div>
+  <p class="loader-text">Loading portfolio…</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
